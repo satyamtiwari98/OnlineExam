@@ -162,6 +162,12 @@
         var option4 = $('#option4').val();
         var answer = $('#answer').val();
 
+        if(subject == '' || question == '' || option1 == '' || option2 == '' || option3 == '' || option4 == '' || answer == '') {
+
+            alert("Please provide valid details !!!");
+
+        }else {
+
         $.ajax({
             url:'../Helper/Helper.php',
             type:'POST',
@@ -188,7 +194,9 @@
                 }
 
             }
-        })
+        });
+
+        }
 
 
     });

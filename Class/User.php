@@ -70,6 +70,8 @@ if ($this->connect->connect_error) {
 
             $_SESSION['user']['email_id'] = $user['email_id'];
             $_SESSION['user']['name'] = $user['name'];
+            $_SESSION['user']['user_id'] = $user['user_id'];
+
 
             return 1;
 

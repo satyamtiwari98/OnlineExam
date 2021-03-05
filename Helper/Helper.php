@@ -73,6 +73,42 @@ if(isset($_POST['action'])) {
             break;
 
 
+        case 'getRandomQuestions':
+            $subject_id = $_POST['subject_id'];
+
+            $questionObject = new Question();
+            $result = $questionObject->GetRandomQuestions($subject_id);
+
+            echo json_encode($result);
+
+            break;
+
+        case 'result':
+            $user_id = $_POST['user_id'];
+            $subject_id = $_POST['subject_id'];
+           
+            $result = 0;
+            $unattemped=0;
+            $wrong=0;
+            for($i=0;$i<10;$i++){
+                if($_POST['answer'.$i]==$_POST['ques'.$i]){
+                    $result+=1;
+                }else if($_POST['ques'.$i]==""){
+                    $unattemped+=1;
+                }else{
+                    $wrong+=1;
+                }
+            }
+
+            $arr = array('result'=>$result,'unattemped'=>$unattemped,'wrong'=>$wrong);
+
+            $resultObject = new Result();
+            $result = $resultObject->InsertResult($result,$user_id,$subject_id);
+        
+            echo json_encode($arr);
+            break;
+
+
 
 
         

@@ -42,6 +42,12 @@
           <a class="nav-link" href="results.php">Results</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="addsubject.php">Add Subject</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="addquestion.php">Add Questions</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="logout.php">LogOut</a>
         </li>
         

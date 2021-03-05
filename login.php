@@ -19,11 +19,14 @@
     <label for="password" class="form-label">Password</label>
     <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password" required>
   </div>
+
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
+
   <input type="submit" class="btn btn-primary" id="loginSubmit" name="loginSubmit" value="LogIn">
+
 </form>
 
 
@@ -33,16 +36,25 @@
 
 
 <?php
+
     include_once 'layout/footer.php';
+    
 ?>
 
 <script>
 
-    $('#loginSubmit').on('click',function(e){
+    $('#loginSubmit').on('click',function(e) {
+
         e.preventDefault();
 
         let email_id = $('#email').val();
         let password = $('#password').val();
+
+        if(email_id == '' || password == ''){
+
+            alert("Please provide valid details !!!!");
+
+        }else {
 
         $.ajax({
             url:'Helper/Helper.php',
@@ -53,19 +65,30 @@
                 'action':'login',
             },
             success:function(response){
-                if(response == 2){
+
+                if(response == 2) {
+
                     alert("You have successfully Logged In !!!!");
                     location.href = 'admin/index.php';
-                }else if(response == 1){
+
+                }else if(response == 1) {
+
                     alert("You have successfully Logged In !!!!");
                     location.href = 'user/index.php';
+
                 }else {
+
                     alert("Login Details Does not match with any user !!! try Again!!");
                     location.reload();
+
                 }
             }
 
         });
 
+        }
+
     });
+
+
 </script>

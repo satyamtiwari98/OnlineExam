@@ -59,6 +59,27 @@ class Question extends Dbcon {
 
     }
 
+    public function GetRandomQuestions($subject_id){
+      $this->subject_id = $subject_id;
+      $data = array();
+
+      $sqlQuery = "SELECT * from `".self::table_question."` where `subject_id`='$this->subject_id' ORDER BY RAND()
+      LIMIT 10";
+
+      $result = $this->connect->query($sqlQuery);
+
+      if($result->num_rows>0){
+        $i = 0;
+        while($row = $result->fetch_assoc()){
+          $data[$i] = $row;
+          ++$i;
+        }
+      }
+
+      return $data;
+
+    }
+
 
 
 

@@ -3,10 +3,9 @@
     include_once 'layout/header.php';
 
 ?>
+<h3 style="color: green; text-align:center; padding:20px;">Add Subject For The Quiz</h3>
 
 <div class="main">
-
-<h3 style="color: green; text-align:center; padding:20px;">Add Subject For The Quiz</h3>
 
     <form action="" method="POST">
 
@@ -36,11 +35,17 @@
 
 <script>
 
-    $('#addsubjectSubmit').click(function(e){
+    $('#addsubjectSubmit').click(function(e) {
+        
         e.preventDefault();
 
         var subject = $('#subject').val();
-        
+
+        if(subject == '') {
+
+            alert("Please provide valid details !!!");
+
+        }else {
 
         $.ajax({
             url:'../Helper/Helper.php',
@@ -51,7 +56,6 @@
             },
             success:function(response){
 
-                console.log(response);
                 if(response == 1) {
 
                     alert("Subject Created Successfully !!!");
@@ -65,6 +69,8 @@
 
             }
         });
+
+        }
 
     });
 </script>

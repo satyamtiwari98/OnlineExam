@@ -35,3 +35,7 @@ form {
     margin: 20px;
 
 }
+
+#disbaled {
+    display: none;
+}
